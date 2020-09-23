@@ -1,4 +1,4 @@
-// average calculates the average of several numbers.
+// average calculates the average of several numbers in a set.
 package main
 
 import "fmt"
