@@ -9,6 +9,15 @@ import (
   "strconv"
 )
 
+func average(numbers ...float64) float64 {
+  var sum float64 = 0
+  for _, number := range numbers {
+    sum += number
+  }
+
+  return sum / float64(len(numbers))
+}
+
 func main() {
   var numbers []float64
   var err error
@@ -29,11 +38,5 @@ func main() {
     }
   }
 
-  var sum float64 = 0
-  for _, number := range numbers {
-    sum += number
-  }
-
-  sampleCount := float64(len(numbers))
-  fmt.Printf("Average: %0.2f\n", sum / sampleCount)
+  fmt.Printf("Average: %0.2f\n", average(numbers...))
 }
