@@ -5,12 +5,28 @@ import (
   "fmt"
   "log"
   "github.com/nparsons/datafile"
+  "os"
+  "strconv"
 )
 
 func main() {
-  numbers, err := datafile.GetFloats("data.txt")
-  if err != nil {
-    log.Fatal(err)
+  var numbers []float64
+  var err error
+
+  if len(os.Args) > 1 {
+    for _, arg := range os.Args[1:] {
+      num, err := strconv.ParseFloat(arg, 64)
+      if err != nil {
+        log.Fatal(err)
+      }
+      numbers = append(numbers, num)
+    }
+  } else {
+    numbers, err = datafile.GetFloats("data.txt")
+
+    if err != nil {
+      log.Fatal(err)
+    }
   }
 
   var sum float64 = 0
